@@ -69,7 +69,7 @@ function setupSearch(){
   if(!input || !panel) return;
 
   const index = [
-    ...PRODUCTS.map(p=>({type:'Producto', id:p.id, title:p.name, desc:p.description, href:'producto.html?id='+p.id})),
+    ...PRODUCTS.map(p=>({type:'Producto', id:p.id, title:p.name, desc:p.description, href:'producto-'+p.id+'.html'})),
     ...POSTS.map(p=>({type:'Post',     id:p.id, title:p.title, desc:p.excerpt,      href:'blog.html#'+p.id}))
   ];
 
@@ -121,10 +121,10 @@ function renderSearchPage(){
 
   const prodHTML = prod.length ? prod.map(p=>`
     <article class="card pad product" id="${p.id}">
-      <a href="producto.html?id=${p.id}" class="img-ph">
+      <a href="producto-${p.id}.html" class="img-ph">
         <img src="${p.image}" alt="${p.name}" style="width:100%;border-radius:12px">
       </a>
-      <h3 class="title"><a href="producto.html?id=${p.id}">${p.name}</a></h3>
+      <h3 class="title"><a href="producto-${p.id}.html">${p.name}</a></h3>
       <p>${p.description}</p>
       <p class="price">${money(p.price)}</p>
       <div class="actions">
@@ -156,13 +156,17 @@ function renderSearchPage(){
 }
 
 /* =============================================
- Producto: página producto.html?id=...
+ Producto: página producto-<id>.html
 ============================================= */
 function renderProductPage(){
   const mount = $('#productPage'); if(!mount) return;
 
   const params = new URLSearchParams(location.search);
-  const id = params.get('id');
+  let id = params.get('id');
+  if(!id){
+    const match = location.pathname.match(/producto-([^\.]+)\.html$/);
+    if(match) id = match[1];
+  }
   const p = PRODUCTS.find(x=>x.id === id);
 
   const crumbs = $('#crumbs');
@@ -213,10 +217,10 @@ function renderProductPage(){
   if(rg){
     rg.innerHTML = related.map(r=>`
       <article class="card pad product">
-        <a href="producto.html?id=${r.id}" class="img-ph">
+        <a href="producto-${r.id}.html" class="img-ph">
           <img src="${r.image}" alt="${r.name}" style="width:100%;border-radius:12px">
         </a>
-        <h3 class="title"><a href="producto.html?id=${r.id}">${r.name}</a></h3>
+        <h3 class="title"><a href="producto-${r.id}.html">${r.name}</a></h3>
         <p class="price">${money(r.price)}</p>
         <div class="actions">
           <button class="btn cta" onclick="addToCart(PRODUCTS.find(x=>x.id==='${r.id}'))">Añadir</button>
@@ -246,10 +250,10 @@ function renderHome(){
   if(boxP){
     boxP.innerHTML = PRODUCTS.map(p=>`
       <article class="card pad product" id="${p.id}">
-        <a href="producto.html?id=${p.id}" class="img-ph">
+        <a href="producto-${p.id}.html" class="img-ph">
           <img src="${p.image}" alt="${p.name}" style="width:100%;border-radius:12px">
         </a>
-        <h3 class="title"><a href="producto.html?id=${p.id}">${p.name}</a></h3>
+        <h3 class="title"><a href="producto-${p.id}.html">${p.name}</a></h3>
         <p>${p.description}</p>
         <p class="price">${money(p.price)}</p>
         <div class="actions">
@@ -280,10 +284,10 @@ function renderShop(){
   if(!box) return;
   box.innerHTML = PRODUCTS.map(p=>`
     <article class="card pad product" id="${p.id}">
-      <a href="producto.html?id=${p.id}" class="img-ph">
+      <a href="producto-${p.id}.html" class="img-ph">
         <img src="${p.image}" alt="${p.name}" style="width:100%;border-radius:12px">
       </a>
-      <h3 class="title"><a href="producto.html?id=${p.id}">${p.name}</a></h3>
+      <h3 class="title"><a href="producto-${p.id}.html">${p.name}</a></h3>
       <p>${p.description}</p>
       <p class="price">${money(p.price)}</p>
       <div class="actions">
