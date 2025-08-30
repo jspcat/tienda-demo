@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tienda Demo — ¡Gracias!</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+<meta name="description" content="Gracias por tu compra (simulada)." />
+</head>
+<body data-page="thanks">
+<header class="site-header">
+<div class="container row between center-v">
+<a class="brand" href="index.html">Tienda <span>Demo</span></a>
+<nav class="main-nav">
+<a href="index.html">Inicio</a>
+<a href="tienda.html">Tienda</a>
+<a href="blog.html">Blog</a>
+<a href="contacto.html">Contacto</a>
+<a href="carrito.html">Carrito (<span id="cartCount">0</span>)</a>
+</nav>
+<div class="search">
+<input id="searchInput" type="search" placeholder="Buscar productos o posts…" aria-label="Buscar" />
+<div id="searchResults" class="search-results" aria-live="polite"></div>
+</div>
+</div>
+</header>
+
+
+<main class="container pad-y narrow">
+<h1 class="page-title">¡Gracias por tu compra!</h1>
+<div id="thanksBox"></div>
+</main>
+
+
+<footer class="site-footer">
+<div class="container row between center-v">
+<small>© <span id="year"></span> Tienda Demo</small>
+<small><a href="contacto.html">Contacto</a></small>
+</div>
+</footer>
+
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

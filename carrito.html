@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tienda Demo — Carrito</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+<meta name="description" content="Carrito simulado para pruebas de analítica." />
+</head>
+<body data-page="cart">
+<header class="site-header">
+<div class="container row between center-v">
+<a class="brand" href="index.html">Tienda <span>Demo</span></a>
+<nav class="main-nav">
+<a href="index.html">Inicio</a>
+<a href="tienda.html">Tienda</a>
+<a href="blog.html">Blog</a>
+<a href="contacto.html">Contacto</a>
+<a class="active" href="carrito.html">Carrito (<span id="cartCount">0</span>)</a>
+</nav>
+<div class="search">
+<input id="searchInput" type="search" placeholder="Buscar productos o posts…" aria-label="Buscar" />
+<div id="searchResults" class="search-results" aria-live="polite"></div>
+</div>
+</div>
+</header>
+
+
+<main class="container pad-y">
+<h1 class="page-title">Tu carrito</h1>
+<p id="cartEmpty" class="muted">Aún no has añadido productos.</p>
+<div id="cartList" class="stack"></div>
+<div class="row between center-v" style="margin-top:12px;">
+<strong>Total: <span id="cartTotal">0 €</span></strong>
+<a id="goCheckout" class="btn primary" href="checkout.html">Ir al checkout</a>
+</div>
+</main>
+
+
+<footer class="site-footer">
+<div class="container row between center-v">
+<small>© <span id="year"></span> Tienda Demo</small>
+<small><a href="contacto.html">Contacto</a></small>
+</div>
+</footer>
+
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

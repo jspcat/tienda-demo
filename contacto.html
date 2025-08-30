@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tienda Demo — Contacto</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+<meta name="description" content="Formulario de contacto de ejemplo (sin envío real)." />
+</head>
+<body data-page="contact">
+<header class="site-header">
+<div class="container row between center-v">
+<a class="brand" href="index.html">Tienda <span>Demo</span></a>
+<nav class="main-nav">
+<a href="index.html">Inicio</a>
+<a href="tienda.html">Tienda</a>
+<a href="blog.html">Blog</a>
+<a class="active" href="contacto.html">Contacto</a>
+<a href="carrito.html">Carrito (<span id="cartCount">0</span>)</a>
+</nav>
+<div class="search">
+<input id="searchInput" type="search" placeholder="Buscar productos o posts…" aria-label="Buscar" />
+<div id="searchResults" class="search-results" aria-live="polite"></div>
+</div>
+</div>
+</header>
+
+
+<main class="container pad-y narrow">
+<h1 class="page-title">Contacto</h1>
+<form id="contactForm" class="form card" novalidate>
+<label>Nombre
+<input required type="text" name="nombre" placeholder="Tu nombre" />
+</label>
+<label>Email
+<input required type="email" name="email" placeholder="tucorreo@ejemplo.com" />
+</label>
+<label>Mensaje
+<textarea required name="mensaje" rows="5" placeholder="¿En qué podemos ayudarte?"></textarea>
+</label>
+<button class="btn primary" type="submit">Enviar</button>
+<p class="form-note">Este formulario es de prueba. No se envían datos a ningún servidor.</p>
+<div id="formStatus" class="form-status" aria-live="polite"></div>
+</form>
+</main>
+
+
+<footer class="site-footer">
+<div class="container row between center-v">
+<small>© <span id="year"></span> Tienda Demo</small>
+<small><a href="contacto.html">Contacto</a></small>
+</div>
+</footer>
+
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tienda Demo — Inicio</title>
+<link rel="stylesheet" href="./assets/css/styles.css">
+<meta name="description" content="Tienda de ejemplo con blog y contacto para prácticas de analítica." />
+</head>
+<body data-page="home">
+<header class="site-header">
+<div class="container row between center-v">
+<a class="brand" href="index.html">Tienda <span>Demo</span></a>
+<nav class="main-nav">
+<a class="active" href="index.html">Inicio</a>
+<a href="tienda.html">Tienda</a>
+<a href="blog.html">Blog</a>
+<a href="contacto.html">Contacto</a>
+<a href="carrito.html">Carrito (<span id="cartCount">0</span>)</a>
+</nav>
+<div class="search">
+<input id="searchInput" type="search" placeholder="Buscar productos o posts…" aria-label="Buscar" />
+<div id="searchResults" class="search-results" aria-live="polite"></div>
+</div>
+</div>
+</header>
+
+
+<main>
+<section class="hero container">
+  <div class="hero-content">
+    <h1>Bienvenido a la Tienda Demo</h1>
+    <p>Mini-tienda estática con blog, carrito y checkout simulado para trastear con GA4, GTM y eventos.</p>
+    <div class="cta">
+      <a class="btn primary" href="tienda.html">Ver productos</a>
+      <a class="btn" href="blog.html">Leer el blog</a>
+    </div>
+  </div>
+
+  <div class="hero-media">
+    <img src="assets/img/hero.jpg" alt="Café, taza y moka sobre fondo claro">
+  </div>
+</section>
+
+
+<section class="container pad-y">
+<h2 class="section-title">Destacados</h2>
+<div id="featuredProducts" class="grid cards"></div>
+</section>
+
+
+<section class="container pad-y">
+<h2 class="section-title">Últimos artículos</h2>
+<div id="latestPosts" class="grid cards"></div>
+</section>
+</main>
+
+
+<footer class="site-footer">
+<div class="container row between center-v">
+<small>© <span id="year"></span> Tienda Demo</small>
+<small><a href="contacto.html">Contacto</a></small>
+</div>
+</footer>
+
+
+<script src="./assets/js/app.js"></script>
+</body>
+</html>
