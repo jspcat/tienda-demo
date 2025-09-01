@@ -3,11 +3,11 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Tienda Demo — Checkout</title>
+<title>Tienda Demo — Datos de envío</title>
 <link rel="stylesheet" href="assets/css/styles.css" />
-<meta name="description" content="Checkout simulado con evento purchase en dataLayer." />
+<meta name="description" content="Paso de datos de envío previo al pago." />
 </head>
-<body data-page="checkout">
+<body data-page="shipping">
 <header class="site-header">
 <div class="container row between center-v">
 <a class="brand" href="index.html">Tienda <span>Demo</span></a>
@@ -27,9 +27,9 @@
 
 
 <main class="container pad-y narrow">
-<h1 class="page-title">Checkout</h1>
-<p id="checkoutSummary" class="muted"></p>
-<form id="checkoutForm" class="form card" novalidate>
+<h1 class="page-title">Datos de envío</h1>
+<p id="shippingSummary" class="muted"></p>
+<form id="shippingForm" class="form card" novalidate>
 <label>Nombre
 <input required name="nombre" placeholder="Tu nombre" />
 </label>
@@ -39,8 +39,8 @@
 <label>Dirección
 <input required name="direccion" placeholder="Calle Falsa 123" />
 </label>
-<button class="btn primary" type="submit">Pagar (simulado)</button>
-<p class="form-note">No hay pago real. Al enviar verás la confirmación y se emitirá un evento <code>purchase</code> al <code>dataLayer</code>.</p>
+<button class="btn primary" type="submit">Continuar a pago</button>
+<p class="form-note">Paso simulado. Tus datos se usarán en el pago.</p>
 </form>
 </main>
 

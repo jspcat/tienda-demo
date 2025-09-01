@@ -369,11 +369,11 @@ function renderCartPage(){
 }
 
 /* =============================================
- Checkout
+ Datos de envío
 ============================================= */
-function setupCheckout(){
-  const form = $('#checkoutForm'); const sumEl = $('#checkoutSummary'); if(!form) return;
-  const { cart, value, items } = getCartTotals();
+function setupShipping(){
+  const form = $('#shippingForm'); const sumEl = $('#shippingSummary'); if(!form) return;
+  const { cart, value } = getCartTotals();
   sumEl.textContent = `${cart.length} artículos · Total ${money(value)}`;
   form.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -381,19 +381,35 @@ function setupCheckout(){
     if(!data.nombre || !data.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(data.email)){
       alert('Revisa nombre y email válido.'); return;
     }
-    const orderId = 'ORD-' + Math.random().toString(36).slice(2,8).toUpperCase();
-    pushDL({ event: 'purchase', ecommerce: { transaction_id: orderId, value: +value.toFixed(2), currency: 'EUR', items } });
-    sessionStorage.setItem('last_order', JSON.stringify({ orderId, value, items, email: data.email, nombre: data.nombre }));
-    clearCart();
-    location.href = 'gracias.html';
+    sessionStorage.setItem('shipping', JSON.stringify(data));
+    location.href = 'pago.html';
   });
 }
 
 /* =============================================
- Gracias
+ Pago
 ============================================= */
-function renderThanks(){
-  const box = $('#thanksBox'); if(!box) return;
+function setupPayment(){
+  const form = $('#paymentForm'); const sumEl = $('#paymentSummary'); if(!form) return;
+  const { cart, value, items } = getCartTotals();
+  sumEl.textContent = `${cart.length} artículos · Total ${money(value)}`;
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const shipping = JSON.parse(sessionStorage.getItem('shipping')||'{}');
+    const orderId = 'ORD-' + Math.random().toString(36).slice(2,8).toUpperCase();
+    pushDL({ event: 'purchase', ecommerce: { transaction_id: orderId, value: +value.toFixed(2), currency: 'EUR', items } });
+    sessionStorage.setItem('last_order', JSON.stringify({ orderId, value, items, ...shipping }));
+    sessionStorage.removeItem('shipping');
+    clearCart();
+    location.href = 'compra.html';
+  });
+}
+
+/* =============================================
+ Compra
+============================================= */
+function renderPurchase(){
+  const box = $('#purchaseBox'); if(!box) return;
   const raw = sessionStorage.getItem('last_order');
   if(!raw){ box.innerHTML = '<p class="muted">No hay pedido reciente.</p>'; return; }
   const { orderId, value, items, nombre } = JSON.parse(raw);
@@ -417,8 +433,9 @@ window.addEventListener('DOMContentLoaded', () => {
   if(page==='shop') renderShop();
   if(page==='blog') renderBlog();
   if(page==='cart') renderCartPage();
-  if(page==='checkout') setupCheckout();
-  if(page==='thanks') renderThanks();
+  if(page==='shipping') setupShipping();
+  if(page==='payment') setupPayment();
+  if(page==='purchase') renderPurchase();
   if(page==='search') renderSearchPage();
   if(page==='product') renderProductPage(); // ← ficha de producto
 });

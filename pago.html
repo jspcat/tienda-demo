@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tienda Demo — Datos de pago</title>
+<link rel="stylesheet" href="assets/css/styles.css" />
+<meta name="description" content="Paso de datos de pago simulado." />
+</head>
+<body data-page="payment">
+<header class="site-header">
+<div class="container row between center-v">
+<a class="brand" href="index.html">Tienda <span>Demo</span></a>
+<nav class="main-nav">
+<a href="index.html">Inicio</a>
+<a href="tienda.html">Tienda</a>
+<a href="blog.html">Blog</a>
+<a href="contacto.html">Contacto</a>
+<a href="carrito.html">Carrito (<span id="cartCount">0</span>)</a>
+</nav>
+<div class="search">
+<input id="searchInput" type="search" placeholder="Buscar productos o posts…" aria-label="Buscar" />
+<div id="searchResults" class="search-results" aria-live="polite"></div>
+</div>
+</div>
+</header>
+
+<main class="container pad-y narrow">
+<h1 class="page-title">Datos de pago</h1>
+<p id="paymentSummary" class="muted"></p>
+<form id="paymentForm" class="form card" novalidate>
+<label>Número de tarjeta
+<input required name="tarjeta" placeholder="1111 2222 3333 4444" />
+</label>
+<label>CVV
+<input required name="cvv" placeholder="123" />
+</label>
+<button class="btn primary" type="submit">Finalizar compra</button>
+<p class="form-note">No hay pago real. Al enviar verás la confirmación y se emitirá un evento <code>purchase</code> al <code>dataLayer</code>.</p>
+</form>
+</main>
+
+<footer class="site-footer">
+<div class="container row between center-v">
+<small>© <span id="year"></span> Tienda Demo</small>
+<small><a href="contacto.html">Contacto</a></small>
+</div>
+</footer>
+
+<script src="assets/js/app.js"></script>
+</body>
+</html>
