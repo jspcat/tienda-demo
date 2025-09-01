@@ -9,6 +9,22 @@ const normalize = s => (s||'').toString().toLowerCase().normalize('NFD').replace
 function setYear(){ const y = $('#year'); if(y) y.textContent = new Date().getFullYear(); }
 function pushDL(obj){ window.dataLayer = window.dataLayer || []; window.dataLayer.push(obj); }
 
+function setupMenu(){
+  const nav = $('.main-nav');
+  const container = $('.site-header .container');
+  if(!nav || !container) return;
+  const btn = document.createElement('button');
+  btn.className = 'menu-toggle';
+  btn.setAttribute('aria-label','Abrir menú');
+  btn.setAttribute('aria-expanded','false');
+  btn.textContent = '☰';
+  container.insertBefore(btn, nav);
+  btn.addEventListener('click', () => {
+    const active = nav.classList.toggle('mobile-active');
+    btn.setAttribute('aria-expanded', active);
+  });
+}
+
 /* =============================================
  Datos de demo
 ============================================= */
@@ -395,7 +411,7 @@ function renderThanks(){
  Init
 ============================================= */
 window.addEventListener('DOMContentLoaded', () => {
-  setYear(); updateCartCount(); setupSearch();
+  setYear(); updateCartCount(); setupSearch(); setupMenu();
   const page = document.body.dataset.page;
   if(page==='home') renderHome();
   if(page==='shop') renderShop();
